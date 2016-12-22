@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from place.models import place
+from places.models import Place
 
 
 def index(request):
