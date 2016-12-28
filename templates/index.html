@@ -2,6 +2,25 @@
 
 {% block content %}
 
-    HOME
+  {% for place in places %}
+    <h3>
+      <a href="{{ place.get_absolute_url }}">{{ place.name }}</a>
+    </h3>
+    <p>
+      {{ place.description|linebreaksbr }}
+    </p>
+    {% if place.review_count > 0 %}
+    <h3>Yorumlar ({{ place.review_count }})</h3>
+    {% for review in place.review_set.all %}
+    <blockquote>
+      {{ review.comment }}
+      <small>
+        {{ review.user.username }}
+      </small>
+    </blockquote>
+    {% endfor %}
+    {% endif %}
+
+  {% endfor %}
 
 {% endblock %}
