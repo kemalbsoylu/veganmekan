@@ -4,6 +4,7 @@
 <head>
 	<title>{% block title %}veganmekan{% endblock %}</title>
 	<link rel="stylesheet" type="text/css" href="{% static "style.css" %}">
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@0.7.7/dist/leaflet.css" />
 </head>
 <body>
 <div class="container">
@@ -37,5 +38,11 @@
 		veganmekan - 2016
 	</footer>
 </div>
+
+<script src="https://unpkg.com/leaflet@0.7.7/dist/leaflet.js"></script>
+
+{% block js %}
+{% endblock %}
+
 </body>
 </html>

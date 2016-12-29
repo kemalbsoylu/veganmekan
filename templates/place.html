@@ -18,8 +18,10 @@
     {% endfor %}
   {% endif %}
 
-  {% for media in place.media_set.all %}
-    <img src="{{ media }}">
-  {% endfor %}
+  <div>
+    {% for media in place.media_set.all %}
+      <img src="{{ media }}">
+    {% endfor %}
+  </div>
 
 {% endblock %}
