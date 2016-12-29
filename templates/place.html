@@ -2,12 +2,12 @@
 
 {% block content %}
 
-  <h3>{{ place.name }}</h3>
+  <h2>{{ place.name }}</h2>
   <p>
     {{ place.description|linebreaksbr }}
   </p>
   {% if place.review_count > 0 %}
-    <h3>Yorumlar</h3>
+    <h3>Yorumlar:</h3>
     {% for review in place.review_set.all %}
     <blockquote>
       {{ review.comment }}

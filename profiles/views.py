@@ -40,10 +40,17 @@ def login(request):
                 'Giriş yaptınız.'
             )
 
+            return redirect('/')
+
     return render(request, 'login.html', {
         'form': form,
     })
 
 def logout(request):
     auth_logout(request)
+    messages.info(
+        request,
+        'Çıkış yaptınız.'
+    )
+
     return redirect('/')
