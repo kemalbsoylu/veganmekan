@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth import (
     login as auth_login,
     logout as auth_logout
@@ -46,6 +47,7 @@ def login(request):
         'form': form,
     })
 
+@login_required(login_url='login')
 def logout(request):
     auth_logout(request)
     messages.info(
