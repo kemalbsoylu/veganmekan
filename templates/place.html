@@ -12,12 +12,18 @@
     {% for review in place.review_set.all %}
     <blockquote>
       {{ review.comment }}
+      ({{ review.vote }})
       <small>
         {{ review.user.username }}
       </small>
     </blockquote>
     {% endfor %}
   {% endif %}
+
+  <p>
+    <a href="{% url "new_review" place.id %}">Yorum ekle.</a>
+  </p>
+
   <h3>Fotoğraflar:</h3>
   <div>
     {% for media in place.media_set.all %}
@@ -35,6 +41,7 @@
 {% endblock %}
 
 {% block js %}
+
 <script>
 var map = L.map('map').setView([{{ place.coordinates }}], 12);
 

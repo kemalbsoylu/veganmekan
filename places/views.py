@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
 from places.models import Place
-from places.forms import PlaceCreationForm, MediaCreationForm
+from places.forms import PlaceCreationForm, MediaCreationForm, ReviewCreationForm
 
 
 def index(request):
@@ -70,6 +70,32 @@ def new_media(request, place_id):
     return render(
         request,
         'new_media.html',
+        {
+            'place': place,
+            'form': form,
+        }
+    )
+
+@login_required(login_url='login')
+def new_review(request, place_id):
+    place = get_object_or_404(Place, id=place_id)
+    form = ReviewCreationForm()
+
+    if request.method == "POST":
+        form = ReviewCreationForm(request.POST)
+        if form.is_valid():
+            form.instance.user = request.user
+            form.instance.place = place
+            form.save()
+            messages.info(
+                request,
+                'Yorumunuz eklendi.'
+            )
+            return redirect(place.get_absolute_url())
+
+    return render(
+        request,
+        'new_review.html',
         {
             'place': place,
             'form': form,

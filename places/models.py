@@ -50,7 +50,16 @@ class Review(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL)
     place = models.ForeignKey(Place)
     comment = models.TextField(blank=True, null=True)
-    vote = models.IntegerField(default=3)
+    vote = models.IntegerField(
+        default=3,
+        choices=(
+            (1, 'Berbat'),
+            (2, 'Kötü'),
+            (3, 'Orta'),
+            (4, 'İyi'),
+            (5, 'Harika'),
+        )
+    )
 
     def __str__(self):
         return smart_text(self.comment)
