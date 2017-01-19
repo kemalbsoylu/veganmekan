@@ -2,20 +2,7 @@
 
 {% block content %}
 
-  <div id="map" style="height: 300px"></div>
-
-  {% for place in places %}
-    <h3>
-      <a href="{{ place.get_absolute_url }}">{{ place.name }}</a>
-    </h3>
-    <p>
-      {{ place.description|linebreaksbr }}
-    </p>
-    {% if place.review_count > 0 %}
-    <h5>Yorumlar ({{ place.review_count }})</h5>
-    {% endif %}
-
-  {% endfor %}
+  <div id="map"></div>
 
 {% endblock %}
 
@@ -31,7 +18,10 @@ var markers = [];
 
 {% for place in places %}
 var marker = L.marker([{{ place.coordinates }}]).addTo(map)
-  .bindPopup('<a href="{{ place.get_absolute_url }}">{{ place.name }}</a>');
+  .bindPopup(
+    '<a href="{{ place.get_absolute_url }}">' +
+    '{{ place.name }}' +
+    '</a>');
 
 markers.push(marker);
 {% endfor %}
