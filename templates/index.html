@@ -2,6 +2,9 @@
 
 {% block content %}
 
+  {% if user.is_anonymous %}
+  <p>Yeni mekan eklemek için giriş yapın. Kullanıcı değilseniz kayıt olun.</p>
+  {% endif %}
   <div id="map"></div>
 
 {% endblock %}

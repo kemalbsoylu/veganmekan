@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h3>Kayıt</h3>
+  <h3>Kayıt ol</h3>
 
   <form action="" method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <input type="submit" value="Register" />
+    <input type="submit" value="Gönder" />
   </form>
 {% endblock %}

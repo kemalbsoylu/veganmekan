@@ -10,13 +10,15 @@
   {% if place.review_count > 0 %}
     <h3>Yorumlar:</h3>
     {% for review in place.review_set.all %}
-    <blockquote>
-      {{ review.comment }}
+    <ul>
+      <li>
       ({{ review.vote }})
+      {{ review.comment }}
       <small>
         {{ review.user.username }}
       </small>
-    </blockquote>
+      </li>
+    </ul>
     {% endfor %}
   {% endif %}
 
